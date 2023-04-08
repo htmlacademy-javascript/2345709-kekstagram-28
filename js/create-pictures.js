@@ -1,7 +1,7 @@
-import { getData } from "./api.js";
-import { getBigPopup } from "./big-pictures-popup.js";
-import { showCustomErrorMessage } from "./message.js";
-import { debounce } from "./utils/debounce.js";
+import { getData } from './api.js';
+import { getBigPopup } from './big-pictures-popup.js';
+import { showCustomErrorMessage } from './message.js';
+import { debounce } from './utils/debounce.js';
 import {
   showSortBlock,
   sortDefaultClick,
@@ -10,18 +10,18 @@ import {
   sortInput,
   comparePicturesIds,
   comparePicturesComments,
-} from "./filters.js";
+} from './filters.js';
 
 const RERENDER_DELAY = 500; // Задержка перерисовки изображений
 const MAX_RANDOM_PICTURES = 10; //10 случайных, не повторяющихся фотографий.
 
-const picturesWrap = document.querySelector(".pictures");
+const picturesWrap = document.querySelector('.pictures');
 const usersPhotoListFragment = document.createDocumentFragment();
 
 //Удаляет весь массив картинок
 const resetArray = () => {
   Array.from(picturesWrap.children).forEach((item) => {
-    if (item.classList.contains("picture")) {
+    if (item.classList.contains('picture')) {
       item.remove();
     }
   });
@@ -29,8 +29,8 @@ const resetArray = () => {
 
 // Фрагмент содержимого шаблона картинок
 const pictureTemplate = document
-  .querySelector("#picture")
-  .content.querySelector(".picture");
+  .querySelector('#picture')
+  .content.querySelector('.picture');
 
 // Отрисовка 10 любых фотографий
 const thumbnailsRandomRender = (userPhotos) => {
@@ -40,9 +40,9 @@ const thumbnailsRandomRender = (userPhotos) => {
     .slice(0, MAX_RANDOM_PICTURES)
     .forEach(({ url, likes, comments }) => {
       const photoElement = pictureTemplate.cloneNode(true);
-      photoElement.querySelector(".picture__img").src = url;
-      photoElement.querySelector(".picture__likes").textContent = likes;
-      photoElement.querySelector(".picture__comments").textContent =
+      photoElement.querySelector('.picture__img').src = url;
+      photoElement.querySelector('.picture__likes').textContent = likes;
+      photoElement.querySelector('.picture__comments').textContent =
         comments.length;
       usersPhotoListFragment.appendChild(photoElement);
     });
@@ -55,19 +55,19 @@ const thumbnailsRandomRender = (userPhotos) => {
 const thumbnailsRender = (userPhotos) => {
   userPhotos.slice();
 
-  if (sortInput.value === "default") {
+  if (sortInput.value === 'default') {
     userPhotos.sort(comparePicturesIds);
-  } else if (sortInput.value === "random") {
+  } else if (sortInput.value === 'random') {
     thumbnailsRandomRender();
-  } else if (sortInput.value === "discussed") {
+  } else if (sortInput.value === 'discussed') {
     userPhotos.sort(comparePicturesComments);
   }
 
   userPhotos.forEach(({ url, likes, comments }) => {
     const photoElement = pictureTemplate.cloneNode(true);
-    photoElement.querySelector(".picture__img").src = url;
-    photoElement.querySelector(".picture__likes").textContent = likes;
-    photoElement.querySelector(".picture__comments").textContent =
+    photoElement.querySelector('.picture__img').src = url;
+    photoElement.querySelector('.picture__likes').textContent = likes;
+    photoElement.querySelector('.picture__comments').textContent =
       comments.length;
     usersPhotoListFragment.appendChild(photoElement);
   });
@@ -95,7 +95,7 @@ getData(
   },
   () =>
     showCustomErrorMessage(
-      "Что-то пошло не так. Попробуйте перезагрузить страницу"
+      'Что-то пошло не так. Попробуйте перезагрузить страницу.'
     )
 );
 
