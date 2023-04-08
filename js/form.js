@@ -1,4 +1,4 @@
-import "./../nouislider/nouislider.js";
+import './../nouislider/nouislider.js';
 
 import {
   sliderElementBlock,
