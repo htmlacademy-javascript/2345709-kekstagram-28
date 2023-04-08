@@ -1,5 +1,5 @@
 const getData = (onSuccess, onError) => {
-  fetch("https://28.javascript.pages.academy/kekstagram/data")
+  fetch('https://28.javascript.pages.academy/kekstagram/data')
     .then((response) => {
       if (response.ok) {
         return response;
@@ -15,8 +15,8 @@ const getData = (onSuccess, onError) => {
 };
 
 const sendData = (onSuccess, onFail, onFinally, body) => {
-  fetch("https://28.javascript.pages.academy/kekstagram/", {
-    method: "POST",
+  fetch('https://28.javascript.pages.academy/kekstagram/', {
+    method: 'POST',
     body,
   })
     .then((response) => {
