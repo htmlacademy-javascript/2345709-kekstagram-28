@@ -1,7 +1,6 @@
-const imageLoad = document.querySelector('.img-upload__overlay');
-
 const MAX_HASHTAG_QUANTITY = 5;
 const COMMENT_MAX_LENGTH = 140;
+const imageLoad = document.querySelector('.img-upload__overlay');
 const regExp = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
 
 const hashtags = imageLoad.querySelector('.text__hashtags');
