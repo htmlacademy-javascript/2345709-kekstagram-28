@@ -52,7 +52,7 @@ const thumbnailsRandomRender = (userPhotos) => {
 };
 
 // Отрисовка фотографий
-const thumbnailsRender = (userPhotos) => {
+const renderingFotos = (userPhotos) => {
   userPhotos.slice();
 
   if (sortInput.value === 'default') {
@@ -80,17 +80,17 @@ const thumbnailsRender = (userPhotos) => {
 // Загрузка фотографий
 getData(
   (photos) => {
-    thumbnailsRender(photos);
+    renderingFotos(photos);
     showSortBlock(); //если загрузка миниатюр прошла успешна, убирает скрывающий класс.
 
-    sortDefaultClick(debounce(() => thumbnailsRender(photos), RERENDER_DELAY));
+    sortDefaultClick(debounce(() => renderingFotos(photos), RERENDER_DELAY));
 
     sortRandomClick(
       debounce(() => thumbnailsRandomRender(photos), RERENDER_DELAY)
     );
 
     sortDiscussedClick(
-      debounce(() => thumbnailsRender(photos), RERENDER_DELAY)
+      debounce(() => renderingFotos(photos), RERENDER_DELAY)
     );
   },
   () =>
@@ -99,4 +99,4 @@ getData(
     )
 );
 
-export { thumbnailsRender, picturesWrap };
+export { renderingFotos, picturesWrap };
