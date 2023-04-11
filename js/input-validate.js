@@ -13,7 +13,7 @@ const onHashtagsTextInput = () => {
   hashtags.value = hashtags.value.replaceAll('  ', ' ');
 
   const hashtagsArr = hashtags.value.split(' ');
-  const invalidHashtagsArr = [];
+  const invalidHashtags = [];
 
   if (hashtagsArr[0] === '') {
     hashtagsArr.shift();
@@ -23,7 +23,7 @@ const onHashtagsTextInput = () => {
   }
   hashtagsArr.forEach((hashtag) => {
     if (!hashtag.match(regExp)) {
-      invalidHashtagsArr.push(hashtag);
+      invalidHashtags.push(hashtag);
     }
   });
 
@@ -39,8 +39,8 @@ const onHashtagsTextInput = () => {
   } else if (hashtagsArr.length > MAX_HASHTAG_QUANTITY) {
     hashtags.setCustomValidity(`Нельзя указывать больше ${MAX_HASHTAG_QUANTITY} хэш-тегов. Просьба удалить лишние ${hashtagsArr.length - MAX_HASHTAG_QUANTITY}`);
     hashtags.style.borderColor = '#FF5F49';
-  } else if (invalidHashtagsArr.length !== 0) {
-    hashtags.setCustomValidity(`Некорректно введен хэш-тег: ${invalidHashtagsArr.join(', ')}`);
+  } else if (invalidHashtags.length !== 0) {
+    hashtags.setCustomValidity(`Некорректно введен хэш-тег: ${invalidHashtags.join(', ')}`);
     hashtags.style.borderColor = '#FF5F49';
   } else {
     hashtags.setCustomValidity('');

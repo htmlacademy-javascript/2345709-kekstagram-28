@@ -86,7 +86,6 @@ function closeFormPopup() {
 window.addEventListener('keydown', (evt) => {
   if (isEscape(evt)) {
     evt.preventDefault();
-    closeFormPopup();
   }
   window.removeEventListener('keydown', closeFormPopup);
 });
@@ -104,6 +103,6 @@ const setImgUploadFormSubmit = (onSuccess) => {
   });
 };
 
-setImgUploadFormSubmit(closeFormPopup);
+setImgUploadFormSubmit();
 
 export { formUploadImage, imageLoad, imgUploadPreview };
